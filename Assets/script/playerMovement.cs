@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,23 +15,23 @@ public class playerMovement : MonoBehaviour
 
 	public float moveSpeed;
 	public float jumpForce;
-	
+
 	private Vector3 velocity = Vector3.zero;
 
 	private float horizontalMovement;
 
 	private bool isGrounded;
 	private bool isJumping;
-	
+
 	void Start()
 	{
 		particles = gbParticles.GetComponent<ParticleSystem>();
 	}
 
 	void Update()
-	{	
+	{
 		horizontalMovement = Input.GetAxis(horizontaleInputRef) * moveSpeed * Time.fixedDeltaTime;
-		
+
 		if (Input.GetButtonDown(verticallInputRef) && isGrounded)
 		{
 			isJumping = true;
@@ -64,7 +63,7 @@ public class playerMovement : MonoBehaviour
 			gbParticles.SetActive(false);
 		}
 	}
-	
+
 	void FixedUpdate()
 	{
 		MovePlayer(horizontalMovement);
@@ -74,7 +73,7 @@ public class playerMovement : MonoBehaviour
 	{
 		Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);
 		rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
-		
+
 		if (isJumping)
 		{
 			rb.AddForce(new Vector2(0f, jumpForce));
