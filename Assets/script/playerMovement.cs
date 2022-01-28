@@ -20,7 +20,7 @@ public class playerMovement : MonoBehaviour
 	
 	void Start()
 	{
-		Debug.Log("test");
+		
 	}
 
 	void Update()
@@ -30,6 +30,15 @@ public class playerMovement : MonoBehaviour
 		if (Input.GetButtonDown(verticallInputRef) && isGrounded)
 		{
 			isJumping = true;
+		}
+
+		if (horizontalMovement > 0 && transform.localScale.x < 0)
+		{
+			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+		}
+		else if (horizontalMovement < 0 && transform.localScale.x > 0)
+		{
+			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
 		}
 	}
 	
