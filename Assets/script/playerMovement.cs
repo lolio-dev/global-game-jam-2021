@@ -20,6 +20,7 @@ public class playerMovement : MonoBehaviour
 	
 	void Start()
 	{
+		Debug.Log("test");
 	}
 
 	void Update()
