@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class handlebutton : MonoBehaviour
+public class HandleButton : MonoBehaviour
 {
 	public colorController ColorController;
 	public GameObject test;
@@ -9,7 +9,8 @@ public class handlebutton : MonoBehaviour
 
 	public Sprite WhiteOff;
 	public Sprite WhiteOn;
-	
+
+
 	void Start()
 	{
 		ColorController = test.GetComponent<colorController>();
@@ -20,7 +21,7 @@ public class handlebutton : MonoBehaviour
 		if (col.gameObject.CompareTag("player"))
 		{
 			SpriteRenderer.sprite = WhiteOn;
-			ColorController.switchColor();
+			ColorController.TrySwitchColor();
 		}
 	}
 

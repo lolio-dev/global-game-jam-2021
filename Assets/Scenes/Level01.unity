@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867c2d9e6a2fc7f4a90187acdff20217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameplayParameters: {fileID: 11400000, guid: 9d594e6eb785fc953b3c715c60d1360e, type: 2}
   isBlack: 0
   whitePlatforms:
   - {fileID: 157496044}
