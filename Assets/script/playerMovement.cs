@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ public class playerMovement : MonoBehaviour
 	public float moveSpeed;
 	public float jumpForce;
 
+
+	/* State */
+
 	private Vector3 velocity = Vector3.zero;
 
 	private float horizontalMovement;
@@ -24,6 +28,7 @@ public class playerMovement : MonoBehaviour
 	private bool IsGrounded => currentGrounds.Count > 0;
 
 	private bool isJumping;
+
 
 	void Start()
 	{
