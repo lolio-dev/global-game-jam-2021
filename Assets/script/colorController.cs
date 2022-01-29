@@ -38,6 +38,16 @@ public class colorController : MonoBehaviour
 		{
 			spriteR.color = Color.black;
 		}
+		
+		foreach (var boxCollider2D in whitePlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		{
+			boxCollider2D.isTrigger = !isBlack;
+		}
+		
+		foreach (var boxCollider2D in blackPlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		{
+			boxCollider2D.isTrigger = isBlack;
+		}
 	}
 
 	public void switchColor()
@@ -68,12 +78,12 @@ public class colorController : MonoBehaviour
 		
 		foreach (var boxCollider2D in whitePlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
 		{
-			
+			boxCollider2D.isTrigger = !isBlack;
 		}
 		
 		foreach (var boxCollider2D in blackPlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
 		{
-			
+			boxCollider2D.isTrigger = isBlack;
 		}
 	}
 }
