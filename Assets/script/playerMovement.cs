@@ -32,6 +32,7 @@ public class playerMovement : MonoBehaviour
 
 	void Start()
 	{
+
 		particles = gbParticles.GetComponent<ParticleSystem>();
 	}
 
