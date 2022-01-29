@@ -2,17 +2,20 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public class playerMovement : MonoBehaviour
 {
 	public Rigidbody2D rb;
 
-	public GameObject gbParticles;
 	public ParticleSystem particles;
 	public GameObject playerTagObject;
 
-	public string horizontaleInputRef;
-	public string verticallInputRef;
+	[FormerlySerializedAs("horizontaleInputRef")]
+	public string horizontalInputRef;
+
+	[FormerlySerializedAs("verticallInputRef")]
+	public string verticalInputRef;
 
 	[Range(4f, 8f)]
 	public float moveSpeed = 6f;
@@ -33,17 +36,11 @@ public class playerMovement : MonoBehaviour
 	private bool isJumping;
 
 
-	void Start()
-	{
-
-		particles = gbParticles.GetComponent<ParticleSystem>();
-	}
-
 	void Update()
 	{
-		wantedHorizontalSpeed = Input.GetAxis(horizontaleInputRef) * moveSpeed;
+		wantedHorizontalSpeed = Input.GetAxis(horizontalInputRef) * moveSpeed;
 
-		if (Input.GetButtonDown(verticallInputRef) && IsGrounded)
+		if (Input.GetButtonDown(verticalInputRef) && IsGrounded)
 		{
 			isJumping = true;
 		}
@@ -52,26 +49,26 @@ public class playerMovement : MonoBehaviour
 		if (wantedHorizontalSpeed > 0 && transform.localScale.x < 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
-				gbParticles.transform.position.y -  0.415f);
+			particles.transform.position = new Vector2(particles.transform.position.x,
+				particles.transform.position.y -  0.415f);
 			playerTagObject.GetComponent<SpriteRenderer>().flipX = false;
 		}
 		else if (wantedHorizontalSpeed < 0 && transform.localScale.x > 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
-				gbParticles.transform.position.y + 0.415f);
+			particles.transform.position = new Vector2(particles.transform.position.x,
+				particles.transform.position.y + 0.415f);
 			playerTagObject.GetComponent<SpriteRenderer>().flipX = true;
 		}
 
 		//Particles activation
 		if (wantedHorizontalSpeed != 0 && IsGrounded == true)
 		{
-			gbParticles.SetActive(true);
+			particles.gameObject.SetActive(true);
 		}
 		else
 		{
-			gbParticles.SetActive(false);
+			particles.gameObject.SetActive(false);
 		}
 	}
 
