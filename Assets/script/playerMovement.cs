@@ -8,8 +8,12 @@ public class playerMovement : MonoBehaviour
 	public Rigidbody2D rb;
 
 	public GameObject gbParticles;
-	public ParticleSystem particles;
+	private ParticleSystem particles;
 	public GameObject playerTagObject;
+
+	private AudioSource audio;
+	public AudioClip frottementSound;
+	public AudioClip sautSound;
 
 	public string horizontaleInputRef;
 	public string verticallInputRef;
@@ -27,6 +31,7 @@ public class playerMovement : MonoBehaviour
 	void Start()
 	{
 		particles = gbParticles.GetComponent<ParticleSystem>();
+		audio = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -63,6 +68,16 @@ public class playerMovement : MonoBehaviour
 		{
 			gbParticles.SetActive(false);
 		}
+
+		//Play Sound
+		if (Input.GetButtonDown(horizontaleInputRef) && isGrounded == true)
+		{
+			audio.Play();
+		}
+		else if (Input.GetButtonUp(horizontaleInputRef) || isGrounded == false)
+		{
+			audio.Stop();
+		}
 	}
 	
 	void FixedUpdate()
@@ -84,6 +99,7 @@ public class playerMovement : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
+		audio.PlayOneShot(sautSound);
 		if (col.contacts[0].point.y > col.collider.bounds.center.y)
 		{
 			isGrounded = true;
