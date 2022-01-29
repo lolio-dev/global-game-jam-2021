@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using UnityEngine;
 
 public class colorController : MonoBehaviour
@@ -11,9 +8,8 @@ public class colorController : MonoBehaviour
 	public GameObject[] whitePlatforms;
 	public GameObject[] blackPlatforms;
 	public GameObject[] togglePlatforms;
-
 	public GameObject[] players;
-
+	
 	public Sprite blackSprite;
 	public Sprite whiteSprite;
 
@@ -37,12 +33,7 @@ public class colorController : MonoBehaviour
 		{
 			spriteR.color = Color.black;
 		}
-		
-		foreach (var spriteR in blackPlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
-		{
-			spriteR.color = Color.black;
-		}
-		
+
 		foreach (var platform in blackPlatforms)
 		{
 			platform.gameObject.SetActive(!isBlack);
@@ -67,11 +58,12 @@ public class colorController : MonoBehaviour
 		foreach (var player in players)
 		{
 			var spriteR = player.GetComponent<SpriteRenderer>();
+			// var tag = player.GetComponentInChildren();
 
 			spriteR.sprite = isBlack switch
 			{
 				true => whiteSprite,
-				false => blackSprite,
+				false => blackSprite
 			};
 		}
 		
