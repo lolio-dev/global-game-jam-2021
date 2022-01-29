@@ -7,10 +7,8 @@ using UnityEngine.Serialization;
 public class playerMovement : MonoBehaviour
 {
 	public Rigidbody2D rb;
-
+	
 	public ParticleSystem particles;
-	public GameObject gbParticles;
-	private ParticleSystem particles;
 	public GameObject playerTagObject;
 
 	[FormerlySerializedAs("horizontaleInputRef")]
@@ -22,8 +20,6 @@ public class playerMovement : MonoBehaviour
 	public AudioClip frottementSound;
 	public AudioClip sautSound;
 
-	public string horizontaleInputRef;
-	public string verticallInputRef;
 
 	[Range(4f, 8f)]
 	public float moveSpeed = 6f;
@@ -46,7 +42,6 @@ public class playerMovement : MonoBehaviour
 	
 	void Start()
 	{
-		particles = gbParticles.GetComponent<ParticleSystem>();
 		audio = gameObject.GetComponent<AudioSource>();
 	}
 
@@ -76,7 +71,7 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Particles activation
-		if (wantedHorizontalSpeed != 0 && IsGrounded == true)
+		if (wantedHorizontalSpeed != 0 && IsGrounded)
 		{
 			particles.gameObject.SetActive(true);
 		}
@@ -86,11 +81,11 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Play Sound
-		if (Input.GetButtonDown(horizontaleInputRef) && isGrounded == true)
+		if (Input.GetButtonDown(horizontalInputRef) && IsGrounded)
 		{
 			audio.Play();
 		}
-		else if (Input.GetButtonUp(horizontaleInputRef) || isGrounded == false)
+		else if (Input.GetButtonUp(horizontalInputRef) || !IsGrounded)
 		{
 			audio.Stop();
 		}

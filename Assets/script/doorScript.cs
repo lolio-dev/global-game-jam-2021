@@ -35,10 +35,12 @@ public class doorScript : MonoBehaviour
         if (!player1.activeSelf && Input.GetKeyDown(KeyCode.S))
         {
             player1.SetActive(true);
+            nbrPlayers -= 1;
         }
         if (!player2.activeSelf && Input.GetKeyDown(KeyCode.DownArrow))
         {
             player2.SetActive(true);
+            nbrPlayers -= 1;
         }
         
         //End Game
@@ -50,27 +52,27 @@ public class doorScript : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "player1")
+        switch (col.gameObject.name)
         {
-            isCollisionP1 = true;
-        }
-        else if (col.gameObject.name == "player2")
-        {
-            isCollisionP2 = true;
+            case "player1":
+                isCollisionP1 = true;
+                break;
+            case "player2":
+                isCollisionP2 = true;
+                break;
         }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "player1")
+        switch (col.gameObject.name)
         {
-            isCollisionP1 = false;
-            nbrPlayers -= 1;
-        }
-        else if (col.gameObject.name == "player2")
-        {
-            isCollisionP2 = false;
-            nbrPlayers -= 1;
+            case "player1":
+                isCollisionP1 = false;
+                break;
+            case "player2":
+                isCollisionP2 = false;
+                break;
         }
     }
 }
