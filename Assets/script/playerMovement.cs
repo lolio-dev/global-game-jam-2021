@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class playerMovement : MonoBehaviour
 {
 	public Rigidbody2D rb;
-
+	
 	public ParticleSystem particles;
 	public GameObject playerTagObject;
 
@@ -16,6 +16,10 @@ public class playerMovement : MonoBehaviour
 
 	[FormerlySerializedAs("verticallInputRef")]
 	public string verticalInputRef;
+	private AudioSource audio;
+	public AudioClip frottementSound;
+	public AudioClip sautSound;
+
 
 	[Range(4f, 8f)]
 	public float moveSpeed = 6f;
@@ -35,6 +39,11 @@ public class playerMovement : MonoBehaviour
 
 	private bool isJumping;
 
+	
+	void Start()
+	{
+		audio = gameObject.GetComponent<AudioSource>();
+	}
 
 	void Update()
 	{
@@ -62,13 +71,23 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Particles activation
-		if (wantedHorizontalSpeed != 0 && IsGrounded == true)
+		if (wantedHorizontalSpeed != 0 && IsGrounded)
 		{
 			particles.gameObject.SetActive(true);
 		}
 		else
 		{
 			particles.gameObject.SetActive(false);
+		}
+
+		//Play Sound
+		if (Input.GetButtonDown(horizontalInputRef) && IsGrounded)
+		{
+			audio.Play();
+		}
+		else if (Input.GetButtonUp(horizontalInputRef) || !IsGrounded)
+		{
+			audio.Stop();
 		}
 	}
 
@@ -103,6 +122,7 @@ public class playerMovement : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
+		audio.PlayOneShot(sautSound);
 		// This check should be enough for simple rectangular colliders than cannot be touched
 		// from multiple directions at once (otherwise player character may "slide" from one side to another
 		// and pretend it's not on top because it collided on the side first, or reversely)
