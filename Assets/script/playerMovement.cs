@@ -15,12 +15,14 @@ public class playerMovement : MonoBehaviour
 	public string verticallInputRef;
 
 	public float moveSpeed;
-	public float jumpForce;
+
+	[Range(5f, 10f)]
+	public float initialJumpSpeed = 8f;
 
 
 	/* State */
 
-	private Vector3 velocity = Vector3.zero;
+	private float velocityXDampingCurrentVelocity = 0f;
 
 	private float horizontalMovement;
 
@@ -79,14 +81,27 @@ public class playerMovement : MonoBehaviour
 
 	void MovePlayer(float _horizontalMovement)
 	{
-		Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);
-		rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+		var oldVelocity = rb.velocity;
+
+		// Quickly reach target velocity X
+		float targetVelocityX = _horizontalMovement;
+		float newVelocityX = Mathf.SmoothDamp(oldVelocity.x, targetVelocityX, ref velocityXDampingCurrentVelocity, .05f);
+
+		float newVelocityY;
 
 		if (isJumping)
 		{
-			rb.AddForce(new Vector2(0f, jumpForce));
+			// Instantly apply jump velocity on Y
+			newVelocityY = initialJumpSpeed;
 			isJumping = false;
 		}
+		else
+		{
+			// Keep last velocity Y
+			newVelocityY = oldVelocity.y;
+		}
+
+		rb.velocity = new Vector2(newVelocityX, newVelocityY);
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)

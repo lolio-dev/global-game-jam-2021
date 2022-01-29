@@ -4911,7 +4911,7 @@ MonoBehaviour:
   horizontaleInputRef: Horizontal
   verticallInputRef: Vertical
   moveSpeed: 200
-  jumpForce: 400
+  jumpForce: 1
 --- !u!50 &8673738955736811009
 Rigidbody2D:
   serializedVersion: 4
