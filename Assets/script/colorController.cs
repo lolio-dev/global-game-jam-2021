@@ -21,6 +21,14 @@ public class colorController : MonoBehaviour
 
 	public Camera cam;
 
+	public GameObject player1Tag;
+	public GameObject player2Tag;
+
+	public Sprite oneWhiteTag;
+	public Sprite oneBlackTag;
+	public Sprite twoWhiteTag;
+	public Sprite twoBlackTag;
+
 
 	/* State */
 
@@ -67,21 +75,22 @@ public class colorController : MonoBehaviour
 
 		isBlack = !isBlack;
 
-		cam.backgroundColor = isBlack switch
-		{
-			false => Color.white,
-			true => Color.black,
-		};
+		cam.backgroundColor = isBlack ? Color.black : Color.white;
 
 		foreach (var player in players)
 		{
 			var spriteR = player.GetComponent<SpriteRenderer>();
 
-			spriteR.sprite = isBlack switch
+			spriteR.sprite = isBlack ? whiteSprite : blackSprite;
+
+			if (player.name == "player1")
 			{
-				true => whiteSprite,
-				false => blackSprite
-			};
+				player1Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
+			}
+			else if (player.name == "player2")
+			{
+				player2Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
+			}
 		}
 
 		foreach (var spriteR in togglePlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
