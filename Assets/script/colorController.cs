@@ -6,45 +6,74 @@ using UnityEngine;
 
 public class colorController : MonoBehaviour
 {
-    public Color color = Color.white;
+	public Color color = Color.white;
+	public bool isBlack;
+	
+	public GameObject[] whitePlatforms;
+	public GameObject[] blackPlatforms;
+	public GameObject[] togglePlatforms;
 
-    public GameObject[] platforms;
-    public GameObject[] players;	
-    
+	public GameObject[] players;
 
-    public Sprite blackSprite;
-    public Sprite whiteSprite;
+	public Sprite blackSprite;
+	public Sprite whiteSprite;
 
-    public Camera cam;
+	public Camera cam;
 
-    private void Start()
-    {
-	    cam.backgroundColor = Color.black;
-    }
+	private void Start()
+	{
+		cam.backgroundColor = Color.white;
+		
+		foreach (var spriteR in togglePlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
+		{
+			spriteR.color = Color.black;
+		}
+		
+		foreach (var spriteR in whitePlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
+		{
+			spriteR.color = Color.white;
+		}
+		
+		foreach (var spriteR in blackPlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
+		{
+			spriteR.color = Color.black;
+		}
+	}
 
-    public void switchColor()
-    {
-	    foreach (var player in players)
-	    {
-		    var spriteR = player.GetComponent<SpriteRenderer>();
+	public void switchColor()
+	{
+		isBlack = !isBlack;
+		
+		cam.backgroundColor = isBlack switch
+		{
+			false => Color.white,
+			true => Color.black,
+		};
+		
+		foreach (var player in players)
+		{
+			var spriteR = player.GetComponent<SpriteRenderer>();
 
-		    if (color == Color.white) spriteR.sprite = blackSprite;
-		    if (color == Color.black) spriteR.sprite = whiteSprite;
-	    }
-	    
-	    if (color == Color.white)
-	    {
-		    cam.backgroundColor = Color.white;
-		    color = Color.black;
-	    } else if (color == Color.black)
-	    {
-		    cam.backgroundColor = Color.black;
-		    color = Color.white;
-	    }
-
-	    foreach (var spriteR in platforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
-	    {
-		    spriteR.color = color;
-	    }
-    }
+			spriteR.sprite = isBlack switch
+			{
+				true => whiteSprite,
+				false => blackSprite,
+			};
+		}
+		
+		foreach (var spriteR in togglePlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
+		{
+			spriteR.color = isBlack ? Color.white : Color.black;
+		}
+		
+		foreach (var boxCollider2D in whitePlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		{
+			
+		}
+		
+		foreach (var boxCollider2D in blackPlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		{
+			
+		}
+	}
 }
