@@ -21,12 +21,12 @@ public class doorScript : MonoBehaviour
 
     void Update()
     {
-        if (isCollisionP1 == true && Input.GetKeyDown(KeyCode.Z))
+        if (isCollisionP1 && Input.GetKeyDown(KeyCode.Z))
         {
             player1.SetActive(false);
             nbrPlayers += 1;
         }
-        else if (isCollisionP2 == true && Input.GetKeyDown(KeyCode.UpArrow))
+        else if (isCollisionP2 && Input.GetKeyDown(KeyCode.UpArrow))
         {
             player2.SetActive(false);
             nbrPlayers += 1;
