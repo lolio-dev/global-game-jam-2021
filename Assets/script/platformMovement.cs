@@ -7,6 +7,7 @@ public class platformMovement : MonoBehaviour
     public Transform[] waypoints;
     private Transform target;
     public float speed;
+    public int destPoint;
     
     void Start()
     {
@@ -19,7 +20,8 @@ public class platformMovement : MonoBehaviour
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
         if (Vector2.Distance(transform.position, target.position) < 0.3f)
         {
-            target = target == waypoints[1] ? waypoints[0] : waypoints[1];
+            destPoint = (destPoint + 1) % waypoints.Length;
+            target = waypoints[destPoint];
         }
     }
 }
