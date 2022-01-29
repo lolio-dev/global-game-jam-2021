@@ -4820,7 +4820,7 @@ GameObject:
   - component: {fileID: 8673738955736811008}
   m_Layer: 0
   m_Name: player1
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4910,8 +4910,8 @@ MonoBehaviour:
   playerTagObject: {fileID: 8673738955768047424}
   horizontaleInputRef: Horizontal
   verticallInputRef: Vertical
-  moveSpeed: 200
-  jumpForce: 1
+  moveSpeed: 6
+  initialJumpSpeed: 8
 --- !u!50 &8673738955736811009
 Rigidbody2D:
   serializedVersion: 4

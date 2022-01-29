@@ -14,7 +14,8 @@ public class playerMovement : MonoBehaviour
 	public string horizontaleInputRef;
 	public string verticallInputRef;
 
-	public float moveSpeed;
+	[Range(4f, 8f)]
+	public float moveSpeed = 6f;
 
 	[Range(5f, 10f)]
 	public float initialJumpSpeed = 8f;
@@ -24,7 +25,7 @@ public class playerMovement : MonoBehaviour
 
 	private float velocityXDampingCurrentVelocity = 0f;
 
-	private float horizontalMovement;
+	private float wantedHorizontalSpeed;
 
 	private List<Collider2D> currentGrounds = new List<Collider2D>();
 	private bool IsGrounded => currentGrounds.Count > 0;
@@ -40,7 +41,7 @@ public class playerMovement : MonoBehaviour
 
 	void Update()
 	{
-		horizontalMovement = Input.GetAxis(horizontaleInputRef) * moveSpeed * Time.fixedDeltaTime;
+		wantedHorizontalSpeed = Input.GetAxis(horizontaleInputRef) * moveSpeed;
 
 		if (Input.GetButtonDown(verticallInputRef) && IsGrounded)
 		{
@@ -48,14 +49,14 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//PLayer & particles rotation + PlayerTag flip
-		if (horizontalMovement > 0 && transform.localScale.x < 0)
+		if (wantedHorizontalSpeed > 0 && transform.localScale.x < 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
 			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
 				gbParticles.transform.position.y -  0.415f);
 			playerTagObject.GetComponent<SpriteRenderer>().flipX = false;
 		}
-		else if (horizontalMovement < 0 && transform.localScale.x > 0)
+		else if (wantedHorizontalSpeed < 0 && transform.localScale.x > 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
 			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
@@ -64,7 +65,7 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Particles activation
-		if (horizontalMovement != 0 && IsGrounded == true)
+		if (wantedHorizontalSpeed != 0 && IsGrounded == true)
 		{
 			gbParticles.SetActive(true);
 		}
@@ -76,16 +77,15 @@ public class playerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		MovePlayer(horizontalMovement);
+		MovePlayer(wantedHorizontalSpeed);
 	}
 
-	void MovePlayer(float _horizontalMovement)
+	void MovePlayer(float _wantedHorizontalSpeed)
 	{
 		var oldVelocity = rb.velocity;
 
 		// Quickly reach target velocity X
-		float targetVelocityX = _horizontalMovement;
-		float newVelocityX = Mathf.SmoothDamp(oldVelocity.x, targetVelocityX, ref velocityXDampingCurrentVelocity, .05f);
+		float newVelocityX = Mathf.SmoothDamp(oldVelocity.x, _wantedHorizontalSpeed, ref velocityXDampingCurrentVelocity, .05f);
 
 		float newVelocityY;
 
