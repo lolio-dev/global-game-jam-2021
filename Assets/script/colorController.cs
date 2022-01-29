@@ -38,6 +38,21 @@ public class colorController : MonoBehaviour
 		{
 			spriteR.color = Color.black;
 		}
+		
+		foreach (var spriteR in blackPlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
+		{
+			spriteR.color = Color.black;
+		}
+		
+		foreach (var platform in blackPlatforms)
+		{
+			platform.gameObject.SetActive(!isBlack);
+		}
+		
+		foreach (var platform in whitePlatforms)
+		{
+			platform.gameObject.SetActive(isBlack);
+		}
 	}
 
 	public void switchColor()
@@ -66,14 +81,14 @@ public class colorController : MonoBehaviour
 			spriteR.color = isBlack ? Color.white : Color.black;
 		}
 		
-		foreach (var boxCollider2D in whitePlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		foreach (var platform in blackPlatforms)
 		{
-			boxCollider2D.isTrigger = !isBlack;
+			platform.gameObject.SetActive(!isBlack);
 		}
 		
-		foreach (var boxCollider2D in blackPlatforms.Select(platform => platform.GetComponent<BoxCollider2D>()))
+		foreach (var platform in whitePlatforms)
 		{
-			boxCollider2D.isTrigger = isBlack;
+			platform.gameObject.SetActive(isBlack);
 		}
 	}
 }
