@@ -58,7 +58,6 @@ public class colorController : MonoBehaviour
 		foreach (var player in players)
 		{
 			var spriteR = player.GetComponent<SpriteRenderer>();
-			// var tag = player.GetComponentInChildren();
 
 			spriteR.sprite = isBlack switch
 			{
