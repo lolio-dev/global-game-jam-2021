@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class colorController : MonoBehaviour
 {
-	public Color color = Color.white;
 	public bool isBlack;
 	
 	public GameObject[] whitePlatforms;
