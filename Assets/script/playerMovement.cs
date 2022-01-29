@@ -1,9 +1,15 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class playerMovement : MonoBehaviour
 {
 	public Rigidbody2D rb;
+
+	public GameObject gbParticles;
+	public ParticleSystem particles;
+	public GameObject playerTagObject;
 
 	public string horizontaleInputRef;
 	public string verticallInputRef;
@@ -20,7 +26,7 @@ public class playerMovement : MonoBehaviour
 	
 	void Start()
 	{
-		
+		particles = gbParticles.GetComponent<ParticleSystem>();
 	}
 
 	void Update()
@@ -32,13 +38,30 @@ public class playerMovement : MonoBehaviour
 			isJumping = true;
 		}
 
+		//PLayer & particles rotation + PlayerTag flip
 		if (horizontalMovement > 0 && transform.localScale.x < 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
+				gbParticles.transform.position.y -  0.415f);
+			playerTagObject.GetComponent<SpriteRenderer>().flipX = false;
 		}
 		else if (horizontalMovement < 0 && transform.localScale.x > 0)
 		{
 			transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+			gbParticles.transform.position = new Vector2(gbParticles.transform.position.x,
+				gbParticles.transform.position.y + 0.415f);
+			playerTagObject.GetComponent<SpriteRenderer>().flipX = true;
+		}
+
+		//Particles activation
+		if (horizontalMovement != 0 && isGrounded == true)
+		{
+			gbParticles.SetActive(true);
+		}
+		else
+		{
+			gbParticles.SetActive(false);
 		}
 	}
 	
