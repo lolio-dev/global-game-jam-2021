@@ -76,11 +76,11 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Play Sound
-		if (Input.GetButtonDown(horizontaleInputRef) && isGrounded == true)
+		if (Input.GetButtonDown(horizontaleInputRef) && IsGrounded == true)
 		{
 			audio.Play();
 		}
-		else if (Input.GetButtonUp(horizontaleInputRef) || isGrounded == false)
+		else if (Input.GetButtonUp(horizontaleInputRef) || IsGrounded == false)
 		{
 			audio.Stop();
 		}
