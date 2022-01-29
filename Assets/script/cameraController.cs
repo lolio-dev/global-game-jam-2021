@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class cameraController : MonoBehaviour
@@ -15,11 +13,6 @@ public class cameraController : MonoBehaviour
     public float camPositionX;
     public float camPositionY;
     public float zoomMax;
-    
-    void Start()
-    {
-        
-    }
     
     void Update()
     {
