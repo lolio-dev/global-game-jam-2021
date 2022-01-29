@@ -20,7 +20,9 @@ public class playerMovement : MonoBehaviour
 
 	private float horizontalMovement;
 
-	private bool isGrounded;
+	private List<Collider2D> currentGrounds = new List<Collider2D>();
+	private bool IsGrounded => currentGrounds.Count > 0;
+
 	private bool isJumping;
 
 	void Start()
@@ -32,7 +34,7 @@ public class playerMovement : MonoBehaviour
 	{
 		horizontalMovement = Input.GetAxis(horizontaleInputRef) * moveSpeed * Time.fixedDeltaTime;
 
-		if (Input.GetButtonDown(verticallInputRef) && isGrounded)
+		if (Input.GetButtonDown(verticallInputRef) && IsGrounded)
 		{
 			isJumping = true;
 		}
@@ -54,7 +56,7 @@ public class playerMovement : MonoBehaviour
 		}
 
 		//Particles activation
-		if (horizontalMovement != 0 && isGrounded == true)
+		if (horizontalMovement != 0 && IsGrounded == true)
 		{
 			gbParticles.SetActive(true);
 		}
@@ -83,17 +85,23 @@ public class playerMovement : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
+		// This check should be enough for simple rectangular colliders than cannot be touched
+		// from multiple directions at once (otherwise player character may "slide" from one side to another
+		// and pretend it's not on top because it collided on the side first, or reversely)
 		if (col.contacts[0].point.y > col.collider.bounds.center.y)
 		{
-			isGrounded = true;
+			if (!currentGrounds.Contains(col.collider))
+			{
+				currentGrounds.Add(col.collider);
+			}
 		}
 	}
 
 	private void OnCollisionExit2D(Collision2D other)
 	{
-		if (other.gameObject.CompareTag("world"))
+		if (currentGrounds.Contains(other.collider))
 		{
-			isGrounded = false;
+			currentGrounds.Remove(other.collider);
 		}
 	}
 }
