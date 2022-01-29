@@ -40,6 +40,10 @@ namespace UnityConstants
         /// Name of tag 'CanvasMainMenu'.
         /// </summary>
         public const string CanvasMainMenu = "CanvasMainMenu";
+        /// <summary>
+        /// Name of tag 'player'.
+        /// </summary>
+        public const string player = "player";
     }
 
     public static class SortingLayers
@@ -105,12 +109,17 @@ namespace UnityConstants
         /// ID of scene 'SampleScene'.
         /// </summary>
         public const int SampleScene = 1;
+        /// <summary>
+        /// ID of scene 'Level01'.
+        /// </summary>
+        public const int Level01 = 2;
     }
 
     public enum ScenesEnum
     {
         MainMenu = 0,
         SampleScene = 1,
+        Level01 = 2,
     }
 
     public static class Axes
