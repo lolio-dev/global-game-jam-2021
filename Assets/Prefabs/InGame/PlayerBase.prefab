@@ -4906,6 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8673738955736811009}
+  particles: {fileID: 8673738955591566306}
   playerTagObject: {fileID: 8673738955768047424}
   horizontalInputRef: Horizontal
   verticalInputRef: Vertical
