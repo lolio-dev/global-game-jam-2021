@@ -161,6 +161,22 @@ namespace UnityConstants
         /// ID of scene 'Level02_Tuto3'.
         /// </summary>
         public const int Level02_Tuto3 = 3;
+        /// <summary>
+        /// ID of scene 'Level01'.
+        /// </summary>
+        public const int Level01 = 4;
+        /// <summary>
+        /// ID of scene 'Level02'.
+        /// </summary>
+        public const int Level02 = 5;
+        /// <summary>
+        /// ID of scene 'Level03'.
+        /// </summary>
+        public const int Level03 = 6;
+        /// <summary>
+        /// ID of scene 'Level04'.
+        /// </summary>
+        public const int Level04 = 7;
     }
 
     public enum ScenesEnum
@@ -169,6 +185,10 @@ namespace UnityConstants
         Level00_Tuto1 = 1,
         Level01_Tuto2 = 2,
         Level02_Tuto3 = 3,
+        Level01 = 4,
+        Level02 = 5,
+        Level03 = 6,
+        Level04 = 7,
     }
 
     public static class Axes
