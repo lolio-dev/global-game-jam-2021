@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class picsScript : MonoBehaviour
@@ -24,14 +25,18 @@ public class picsScript : MonoBehaviour
     {
         particlesDeath.gameObject.transform.position = new Vector2(gameObject.transform.position.x,
             particlesDeath.gameObject.transform.position.y);
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        var graphic = gameObject.GetComponent<SpriteRenderer>();
+        var rb = gameObject.GetComponent<Rigidbody2D>();
+        graphic.enabled = false; 
+        rb.simulated = false;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
         particlesDeath.Play();
         yield return new WaitForSeconds(2);
         gameObject.transform.position = new Vector2(spawn.transform.position.x, spawn.transform.position.y);
-        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        graphic.enabled = true;
+        rb.simulated = true;
         gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
