@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7373165552075237131, guid: 1d1e4db1b24a12035a1869a03328067d, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8673738955736811068, guid: 1d1e4db1b24a12035a1869a03328067d, type: 3}
       propertyPath: verticalInputRef
       value: Vertical

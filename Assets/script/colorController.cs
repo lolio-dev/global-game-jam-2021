@@ -15,9 +15,13 @@ public class colorController : MonoBehaviour
 	public GameObject[] blackPlatforms;
 	public GameObject[] togglePlatforms;
 	public GameObject[] players;
+	public GameObject[] doors;
 
 	public Sprite blackSprite;
 	public Sprite whiteSprite;
+
+	public Sprite doorBlackSprite;
+	public Sprite doorWhiteSprite;
 
 	public Camera cam;
 
@@ -92,6 +96,17 @@ public class colorController : MonoBehaviour
 					player2Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? twoWhiteTag : twoBlackTag;
 					break;
 			}
+		}
+		
+		foreach (var door in doors)
+		{
+			var spriteR = door.GetComponent<SpriteRenderer>();
+
+			spriteR.sprite = isBlack switch
+			{
+				true => doorWhiteSprite,
+				false => doorBlackSprite
+			};
 		}
 
 		foreach (var spriteR in togglePlatforms.Select(platform => platform.GetComponent<SpriteRenderer>()))
