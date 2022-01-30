@@ -89,10 +89,10 @@ public class colorController : MonoBehaviour
 
 			switch (player.name)
 			{
-				case "player1":
+				case "Player1":
 					player1Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
 					break;
-				case "player2":
+				case "Player2":
 					player2Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? twoWhiteTag : twoBlackTag;
 					break;
 			}

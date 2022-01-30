@@ -17,7 +17,6 @@ public class picsScript : MonoBehaviour
         if (col.gameObject.tag == "traps")
         {
             StartCoroutine(DeathCoroutine());
-            Debug.Log("oui");
         }
     }
 
