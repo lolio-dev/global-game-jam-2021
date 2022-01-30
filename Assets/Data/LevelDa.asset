@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c9f7163b4740dcf6a2c6c60fd0c32a0, type: 3}
-  m_Name: LevelData_00
+  m_Script: {fileID: 11500000, guid: 802101e993724a26b4d28a6ac8eb70c2, type: 3}
+  m_Name: LevelDa
   m_EditorClassIdentifier: 
-  levelIndex: 0
-  sceneEnum: 1
-  bgm: {fileID: 0}
+  levelDataArray:
+  - {fileID: 11400000, guid: 9976b2abe6213d4c69029ab2cab48d42, type: 2}

@@ -104,6 +104,14 @@ namespace UnityConstants
         /// Index of layer 'UI'.
         /// </summary>
         public const int UI = 5;
+        /// <summary>
+        /// Index of layer 'Environment'.
+        /// </summary>
+        public const int Environment = 6;
+        /// <summary>
+        /// Index of layer 'Prop'.
+        /// </summary>
+        public const int Prop = 7;
 
         /// <summary>
         /// Bitmask of layer 'Default'.
@@ -125,6 +133,14 @@ namespace UnityConstants
         /// Bitmask of layer 'UI'.
         /// </summary>
         public const int UIMask = 1 << 5;
+        /// <summary>
+        /// Bitmask of layer 'Environment'.
+        /// </summary>
+        public const int EnvironmentMask = 1 << 6;
+        /// <summary>
+        /// Bitmask of layer 'Prop'.
+        /// </summary>
+        public const int PropMask = 1 << 7;
     }
 
     public static class Scenes
@@ -134,20 +150,25 @@ namespace UnityConstants
         /// </summary>
         public const int MainMenu = 0;
         /// <summary>
+        /// ID of scene 'Level_Tuto1'.
+        /// </summary>
+        public const int Level_Tuto1 = 1;
+        /// <summary>
         /// ID of scene 'SampleScene'.
         /// </summary>
-        public const int SampleScene = 1;
+        public const int SampleScene = 2;
         /// <summary>
         /// ID of scene 'Level01'.
         /// </summary>
-        public const int Level01 = 2;
+        public const int Level01 = 3;
     }
 
     public enum ScenesEnum
     {
         MainMenu = 0,
-        SampleScene = 1,
-        Level01 = 2,
+        Level_Tuto1 = 1,
+        SampleScene = 2,
+        Level01 = 3,
     }
 
     public static class Axes
