@@ -45,6 +45,8 @@ public class playerMovement : MonoBehaviour
 	private readonly List<Collider2D> currentGrounds = new List<Collider2D>();
 	private bool IsGrounded => currentGrounds.Count > 0;
 
+	private platformMovement cachedPlatformMovement = null;
+
 	private bool wantsToGoUp;
 	private bool wantsToGoDown;
 
@@ -250,6 +252,9 @@ public class playerMovement : MonoBehaviour
 		spriteRenderer.enabled = false;
 		rb.simulated = false;
 		myCollider2D.enabled = false;
+
+		currentGrounds.Clear();
+
 		audioSource.Stop();
 
 		particles.gameObject.SetActive(false);
