@@ -48,7 +48,7 @@ public class doorScript : MonoBehaviour
         //End Game
         if (nbrPlayers == 2)
         {
-            Debug.Log("Level finished");
+            LevelManager.Instance.LoadNextLevelOrGoBackToMainMenu();
         }
     }
 }

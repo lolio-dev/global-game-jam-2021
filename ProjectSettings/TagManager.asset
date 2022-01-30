@@ -10,6 +10,7 @@ TagManager:
   - CanvasMainMenu
   - traps
   - spawn
+  - LevelIdentifier
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Environment
+  - Prop
   - 
   - 
   - 
