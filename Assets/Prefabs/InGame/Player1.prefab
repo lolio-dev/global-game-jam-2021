@@ -12,6 +12,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8673738955736811068, guid: 1d1e4db1b24a12035a1869a03328067d, type: 3}
+      propertyPath: moveUpInputRef
+      value: MoveUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673738955736811068, guid: 1d1e4db1b24a12035a1869a03328067d, type: 3}
+      propertyPath: moveDownInputRef
+      value: MoveDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673738955736811068, guid: 1d1e4db1b24a12035a1869a03328067d, type: 3}
       propertyPath: verticalInputRef
       value: Vertical
       objectReference: {fileID: 0}

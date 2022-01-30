@@ -4907,10 +4907,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8673738955736811009}
-  particles: {fileID: 0}
+  spriteRenderer: {fileID: 8673738955736811071}
+  myCollider2D: {fileID: 8673738955736811008}
+  particles: {fileID: 8673738955591566306}
   playerTagObject: {fileID: 8673738955768047424}
+  playerNumber: 0
   horizontalInputRef: Horizontal
-  verticalInputRef: Vertical
+  moveUpInputRef: 
+  moveDownInputRef: 
   frottementSound: {fileID: 8300000, guid: 64b810e1916bac04f946375447a3a990, type: 3}
   sautSound: {fileID: 8300000, guid: cd95a41c03a11b8409890b705be2c8fe, type: 3}
   moveSpeed: 6
