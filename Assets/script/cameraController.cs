@@ -24,7 +24,7 @@ public class cameraController : MonoBehaviour
     public float minSpanX = 5f;
 
     [Tooltip("Maximum span in X direction that the camera can view (also affects orthographic size)")]
-    [Range(10f, 50f)]
+    [Range(10f, 100f)]
     public float maxSpanX = 30f;
 
 
