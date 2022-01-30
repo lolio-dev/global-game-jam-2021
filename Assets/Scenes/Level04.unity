@@ -1705,6 +1705,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7079119732641124442, guid: ab5ec652a10d96242b0cea9fc59ca8a5, type: 3}
   m_PrefabInstance: {fileID: 1064773552}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1064773554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7079119732641124438, guid: ab5ec652a10d96242b0cea9fc59ca8a5, type: 3}
+  m_PrefabInstance: {fileID: 1064773552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1117208133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4290837854429334021, guid: 0cae96e2c24221f668e4e110a534afbc, type: 3}
@@ -2413,7 +2418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4798821361141553747, guid: bfc0238ff2155304ca3b1d78a9aca7d6, type: 3}
       propertyPath: togglePlatforms.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4798821361141553747, guid: bfc0238ff2155304ca3b1d78a9aca7d6, type: 3}
       propertyPath: blackPlatforms.Array.data[0]
@@ -2514,7 +2519,7 @@ PrefabInstance:
     - target: {fileID: 4798821361141553747, guid: bfc0238ff2155304ca3b1d78a9aca7d6, type: 3}
       propertyPath: togglePlatforms.Array.data[15]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1064773554}
     - target: {fileID: 4798821361141553747, guid: bfc0238ff2155304ca3b1d78a9aca7d6, type: 3}
       propertyPath: togglePlatforms.Array.data[16]
       value: 
