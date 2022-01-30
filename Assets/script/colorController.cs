@@ -83,13 +83,14 @@ public class colorController : MonoBehaviour
 
 			spriteR.sprite = isBlack ? whiteSprite : blackSprite;
 
-			if (player.name == "player1")
+			switch (player.name)
 			{
-				player1Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
-			}
-			else if (player.name == "player2")
-			{
-				player2Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
+				case "player1":
+					player1Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? oneWhiteTag : oneBlackTag;
+					break;
+				case "player2":
+					player2Tag.GetComponent<SpriteRenderer>().sprite = isBlack ? twoWhiteTag : twoBlackTag;
+					break;
 			}
 		}
 
@@ -113,7 +114,7 @@ public class colorController : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{
+	{	
 		if (switchCooldownLeft > 0f)
 		{
 			// Count down cooldown time left
