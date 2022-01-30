@@ -37,13 +37,29 @@ namespace UnityConstants
         /// </summary>
         public const string world = "world";
         /// <summary>
+        /// Name of tag 'player'.
+        /// </summary>
+        public const string player = "player";
+        /// <summary>
+        /// Name of tag 'btn'.
+        /// </summary>
+        public const string btn = "btn";
+        /// <summary>
         /// Name of tag 'CanvasMainMenu'.
         /// </summary>
         public const string CanvasMainMenu = "CanvasMainMenu";
         /// <summary>
-        /// Name of tag 'player'.
+        /// Name of tag 'traps'.
         /// </summary>
-        public const string player = "player";
+        public const string traps = "traps";
+        /// <summary>
+        /// Name of tag 'spawn'.
+        /// </summary>
+        public const string spawn = "spawn";
+        /// <summary>
+        /// Name of tag 'LevelIdentifier'.
+        /// </summary>
+        public const string LevelIdentifier = "LevelIdentifier";
     }
 
     public static class SortingLayers
@@ -52,6 +68,18 @@ namespace UnityConstants
         /// ID of sorting layer 'Default'.
         /// </summary>
         public const int Default = 0;
+        /// <summary>
+        /// ID of sorting layer 'Environment'.
+        /// </summary>
+        public const int Environment = -1980145181;
+        /// <summary>
+        /// ID of sorting layer 'BackgroundProp'.
+        /// </summary>
+        public const int BackgroundProp = 2078051267;
+        /// <summary>
+        /// ID of sorting layer 'PlayerCharacter'.
+        /// </summary>
+        public const int PlayerCharacter = 1308825639;
     }
 
     public static class Layers
@@ -137,13 +165,21 @@ namespace UnityConstants
         /// </summary>
         public const string HorizontalUI = "HorizontalUI";
         /// <summary>
-        /// Input axis 'Vertical'.
+        /// Input axis 'MoveUp'.
         /// </summary>
-        public const string Vertical = "Vertical";
+        public const string MoveUp = "MoveUp";
         /// <summary>
-        /// Input axis 'VerticalAlt'.
+        /// Input axis 'MoveUpAlt'.
         /// </summary>
-        public const string VerticalAlt = "VerticalAlt";
+        public const string MoveUpAlt = "MoveUpAlt";
+        /// <summary>
+        /// Input axis 'MoveDown'.
+        /// </summary>
+        public const string MoveDown = "MoveDown";
+        /// <summary>
+        /// Input axis 'MoveDownAlt'.
+        /// </summary>
+        public const string MoveDownAlt = "MoveDownAlt";
         /// <summary>
         /// Input axis 'VerticalUI'.
         /// </summary>
@@ -176,6 +212,10 @@ namespace UnityConstants
         /// Input axis 'Mouse ScrollWheel'.
         /// </summary>
         public const string Mouse_ScrollWheel = "Mouse ScrollWheel";
+        /// <summary>
+        /// Input axis 'Vertical'.
+        /// </summary>
+        public const string Vertical = "Vertical";
         /// <summary>
         /// Input axis 'Submit'.
         /// </summary>
