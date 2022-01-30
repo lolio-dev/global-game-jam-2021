@@ -27,6 +27,36 @@ public class LevelManager : SingletonManager<LevelManager>
         m_LevelData = GameObject.FindWithTag(Tags.LevelIdentifier)?.GetComponent<LevelIdentifier>()?.levelData;
     }
 
+    private void Update()
+    {
+        // Press M to quick exit to main menu
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ExitToMainMenu();
+        }
+
+        // Press R to quick reload level
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadLevel();
+        }
+    }
+
+    public void ReloadLevel()
+    {
+        if (m_LevelData != null)
+        {
+            // convert scene enum to scene build index and load next level scene
+            int nextLevelSceneBuildIndex = (int) m_LevelData.sceneEnum;
+
+            // In case LevelManager is flagged DontDestroyOnLoad, clean up although we're reloading the same level
+            // so it will be set to the same data again immediately
+            m_LevelData = null;
+
+            SceneManager.LoadScene(nextLevelSceneBuildIndex);
+        }
+    }
+
     public void LoadNextLevelOrGoBackToMainMenu()
     {
         // If LevelManager is flagged DontDestroyOnLoad, it will be kept in next level (if any),
