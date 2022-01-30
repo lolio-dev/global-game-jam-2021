@@ -6000,7 +6000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 878971157614001297, guid: 6971fc9730a28b84b9a6712bc20fcb62, type: 3}
       propertyPath: maxSpanX
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 878971157614001297, guid: 6971fc9730a28b84b9a6712bc20fcb62, type: 3}
       propertyPath: minSpanX
