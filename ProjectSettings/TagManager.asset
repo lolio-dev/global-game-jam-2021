@@ -8,6 +8,8 @@ TagManager:
   - player
   - btn
   - CanvasMainMenu
+  - traps
+  - spawn
   layers:
   - Default
   - TransparentFX
