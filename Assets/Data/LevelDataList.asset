@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802101e993724a26b4d28a6ac8eb70c2, type: 3}
-  m_Name: LevelDa
+  m_Name: LevelDataList
   m_EditorClassIdentifier: 
   levelDataArray:
-  - {fileID: 11400000, guid: 9976b2abe6213d4c69029ab2cab48d42, type: 2}
+  - {fileID: 11400000, guid: 44cd66662b48e895193d58a530e34ab4, type: 2}
+  - {fileID: 11400000, guid: f93a74a355a9dc94f993d06efb74dad5, type: 2}
+  - {fileID: 11400000, guid: 2bddd0df7b606c2499e3d2077d16c1ea, type: 2}

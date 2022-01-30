@@ -150,25 +150,25 @@ namespace UnityConstants
         /// </summary>
         public const int MainMenu = 0;
         /// <summary>
-        /// ID of scene 'Level_Tuto1'.
+        /// ID of scene 'Level00_Tuto1'.
         /// </summary>
-        public const int Level_Tuto1 = 1;
+        public const int Level00_Tuto1 = 1;
         /// <summary>
-        /// ID of scene 'SampleScene'.
+        /// ID of scene 'Level01_Tuto2'.
         /// </summary>
-        public const int SampleScene = 2;
+        public const int Level01_Tuto2 = 2;
         /// <summary>
-        /// ID of scene 'Level01'.
+        /// ID of scene 'Level02_Tuto3'.
         /// </summary>
-        public const int Level01 = 3;
+        public const int Level02_Tuto3 = 3;
     }
 
     public enum ScenesEnum
     {
         MainMenu = 0,
-        Level_Tuto1 = 1,
-        SampleScene = 2,
-        Level01 = 3,
+        Level00_Tuto1 = 1,
+        Level01_Tuto2 = 2,
+        Level02_Tuto3 = 3,
     }
 
     public static class Axes
