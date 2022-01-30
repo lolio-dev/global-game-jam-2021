@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class OptionsMenu : Menu
 {
     [Header("Child references")]
-    
+
     [Tooltip("Back button")]
     public Button buttonBack;
 
@@ -24,11 +24,11 @@ public class OptionsMenu : Menu
             buttonBack.onClick.RemoveAllListeners();
         }
     }
-    
+
     public override void Show()
     {
         gameObject.SetActive(true);
-        
+
         buttonBack.Select();
     }
 
@@ -38,12 +38,12 @@ public class OptionsMenu : Menu
 
         gameObject.SetActive(false);
     }
-    
+
     public override bool ShouldShowTitle()
     {
-        return true;
+        return false;
     }
-    
+
     public override bool CanGoBack()
     {
         return true;
