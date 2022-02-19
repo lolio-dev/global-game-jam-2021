@@ -1,4 +1,4 @@
-![Light Switch banner](Screenshots/itch.io banner.png?raw=true)
+![Light Switch banner](Screenshots/itch.io%20banner.png?raw=true)
 
 Light Switch is a cooperative puzzle-platformer for two players.
 
