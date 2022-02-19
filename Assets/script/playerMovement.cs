@@ -100,13 +100,29 @@ public class playerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		// Consume one-time input to avoid sticky input
+		bool consumedWantsToGoUp = false;
+		bool consumedWantsToGoDown = false;
+
+		if (wantsToGoUp)
+		{
+			wantsToGoUp = false;
+			consumedWantsToGoUp = true;
+		}
+
+		if (wantsToGoDown)
+		{
+			wantsToGoDown = false;
+			consumedWantsToGoDown = true;
+		}
+
 		if (enteredDoor)
 		{
-			HandleActionsInsideDoor();
+			HandleActionsInsideDoor(consumedWantsToGoDown);
 		}
 		else
 		{
-			MovePlayer();
+			MovePlayer(consumedWantsToGoUp);
 
 			//Play Sound
 			if (!audioSource.isPlaying)
@@ -126,7 +142,7 @@ public class playerMovement : MonoBehaviour
 		}
 	}
 
-	void MovePlayer()
+	void MovePlayer(bool consumedWantsToGoUp)
 	{
 		var oldVelocity = rb.velocity;
 
@@ -135,9 +151,9 @@ public class playerMovement : MonoBehaviour
 
 		float newVelocityY = oldVelocity.y;
 
-		if (wantsToGoUp)
+		if (consumedWantsToGoUp)
 		{
-			wantsToGoUp = false;
+			consumedWantsToGoUp = false;
 
 			// Can only jump or enter door if grounded
 			if (IsGrounded)
@@ -158,13 +174,13 @@ public class playerMovement : MonoBehaviour
 		rb.velocity = new Vector2(newVelocityX, newVelocityY);
 	}
 
-	void HandleActionsInsideDoor()
+	void HandleActionsInsideDoor(bool consumedWantsToGoDown)
 	{
 		Debug.Assert(enteredDoor != null, "Missing entered door, yet we should be inside door", this);
 
-		if (wantsToGoDown)
+		if (consumedWantsToGoDown)
 		{
-			wantsToGoDown = false;
+			consumedWantsToGoDown = false;
 
 			// Exit door we are in
 			enteredDoor.MakeCharacterExitDoor(this);
