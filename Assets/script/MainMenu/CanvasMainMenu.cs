@@ -29,11 +29,13 @@ public class CanvasMainMenu : MonoBehaviour
 
     public void ShowTitle()
     {
-        titleText.enabled = true;
+        // Show game object completely so it affects children too, on which we play some animation
+        titleText.gameObject.SetActive(true);
     }
 
     public void HideTitle()
     {
-        titleText.enabled = false;
+        // Hide game object completely so it affects children too, on which we play some animation
+        titleText.gameObject.SetActive(false);
     }
 }
