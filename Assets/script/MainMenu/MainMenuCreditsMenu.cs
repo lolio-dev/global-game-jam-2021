@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CreditsMenu : Menu
+public class MainMenuCreditsMenu : Menu
 {
     [Header("Child references")]
 

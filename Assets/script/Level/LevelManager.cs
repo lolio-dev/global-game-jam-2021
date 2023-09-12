@@ -32,7 +32,7 @@ public class LevelManager : SingletonManager<LevelManager>
         // Press M to quick exit to main menu
         if (Input.GetKeyDown(KeyCode.M))
         {
-            ExitToMainMenu();
+            ExitToCredits();
         }
 
         // Press R to quick reload level
@@ -57,7 +57,7 @@ public class LevelManager : SingletonManager<LevelManager>
         }
     }
 
-    public void LoadNextLevelOrGoBackToMainMenu()
+    public void LoadNextLevelOrFinalCredits()
     {
         // If LevelManager is flagged DontDestroyOnLoad, it will be kept in next level (if any),
         // and it will be cleaner to clean the cached scene references first.
@@ -95,12 +95,12 @@ public class LevelManager : SingletonManager<LevelManager>
                 nextLevelIndex);
         }
 
-        // last level was finished, or we failed to find next level => clear current save and go back to title
-        ExitToMainMenu();
+        // last level was finished, or we failed to find next level => show credits
+        ExitToCredits();
     }
 
-    public static void ExitToMainMenu()
+    public static void ExitToCredits()
     {
-        SceneManager.LoadScene((int) ScenesEnum.MainMenu);
+        SceneManager.LoadScene((int) ScenesEnum.Credits);
     }
 }

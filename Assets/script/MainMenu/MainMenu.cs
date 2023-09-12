@@ -33,7 +33,7 @@ public class MainMenu : Menu
     public OptionsMenu optionsMenu;
 
     [Tooltip("Credits menu")]
-    public CreditsMenu creditsMenu;
+    public MainMenuCreditsMenu creditsMenu;
 
 
     private void Awake()
