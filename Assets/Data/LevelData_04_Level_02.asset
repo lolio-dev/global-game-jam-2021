@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelIndex: 4
   sceneEnum: 5
+  thumbnail: {fileID: 21300000, guid: 9ccd79bfcabd81fe1b33a5e4b617ccc6, type: 3}
   bgm: {fileID: 0}

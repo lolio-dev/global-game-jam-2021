@@ -8,6 +8,9 @@ public class LevelButtonWidget : MonoBehaviour
 {
     [Header("Child references")]
 
+    [Tooltip("Level thumbnail")]
+    public Image levelThumbnail;
+
     [Tooltip("Level text")]
     public TextMeshProUGUI levelText;
 
@@ -49,6 +52,15 @@ public class LevelButtonWidget : MonoBehaviour
 
     private void RefreshVisual()
     {
+        LevelData[] levelDataList = MainMenuManager.Instance.levelDataList.levelDataArray;
+        LevelData levelData = levelDataList[m_LevelIndex];
+
+        if (levelThumbnail != null)
+        {
+            levelThumbnail.sprite = levelData.thumbnail;
+            levelThumbnail.enabled = true;
+        }
+
         // Level index starts at 0, so +1 to make it start at 1 (human-readable)
         levelText.text = $"Level {m_LevelIndex + 1}";
     }
