@@ -20,6 +20,9 @@ public class MainMenu : Menu
     [Tooltip("Options button")]
     public Button buttonOptions;
 
+    [Tooltip("Credits button")]
+    public Button buttonCredits;
+
     [Tooltip("Exit button")]
     public Button buttonExit;
 
@@ -29,11 +32,15 @@ public class MainMenu : Menu
     [Tooltip("Options menu")]
     public OptionsMenu optionsMenu;
 
+    [Tooltip("Credits menu")]
+    public CreditsMenu creditsMenu;
+
 
     private void Awake()
     {
         buttonPlay.onClick.AddListener(EnterPlayMenu);
         buttonOptions.onClick.AddListener(EnterOptionsMenu);
+        buttonCredits.onClick.AddListener(EnterCreditsMenu);
         buttonExit.onClick.AddListener(ExitGame);
 
         #if UNITY_EDITOR || DEVELOPMENT_BUILD
@@ -50,6 +57,10 @@ public class MainMenu : Menu
         if (buttonOptions)
         {
             buttonOptions.onClick.RemoveAllListeners();
+        }
+        if (buttonCredits)
+        {
+            buttonCredits.onClick.RemoveAllListeners();
         }
         if (buttonExit)
         {
@@ -89,6 +100,11 @@ public class MainMenu : Menu
     private void EnterOptionsMenu()
     {
         MainMenuManager.Instance.EnterMenu(optionsMenu);
+    }
+
+    private void EnterCreditsMenu()
+    {
+        MainMenuManager.Instance.EnterMenu(creditsMenu);
     }
 
     private void ExitGame()
