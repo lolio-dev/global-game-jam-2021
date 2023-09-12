@@ -8,8 +8,8 @@ public class colorController : MonoBehaviour
 
 	public GameplayParameters gameplayParameters;
 
-
-	public bool isBlack;
+	/// Current color state
+	private bool isBlack;
 
 	public GameObject[] whitePlatforms;
 	public GameObject[] blackPlatforms;
@@ -97,7 +97,7 @@ public class colorController : MonoBehaviour
 					break;
 			}
 		}
-		
+
 		foreach (var door in doors)
 		{
 			var spriteR = door.GetComponent<SpriteRenderer>();
@@ -129,7 +129,7 @@ public class colorController : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{	
+	{
 		if (switchCooldownLeft > 0f)
 		{
 			// Count down cooldown time left
