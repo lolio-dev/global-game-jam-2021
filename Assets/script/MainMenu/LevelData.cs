@@ -16,6 +16,9 @@ public class LevelData : ScriptableObject
     [Tooltip("Scene containing this level. Must be in build settings. Cast to int to LoadScene.")]
     public ScenesEnum sceneEnum;
 
+    [Tooltip("Thumbnail of level, displayed on level select menu")]
+    public Sprite thumbnail;
+
     [Tooltip("BGM played during level")]
     public AudioClip bgm;
 }

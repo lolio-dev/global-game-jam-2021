@@ -177,6 +177,10 @@ namespace UnityConstants
         /// ID of scene 'Level04'.
         /// </summary>
         public const int Level04 = 7;
+        /// <summary>
+        /// ID of scene 'Credits'.
+        /// </summary>
+        public const int Credits = 8;
     }
 
     public enum ScenesEnum
@@ -189,6 +193,7 @@ namespace UnityConstants
         Level02 = 5,
         Level03 = 6,
         Level04 = 7,
+        Credits = 8,
     }
 
     public static class Axes
