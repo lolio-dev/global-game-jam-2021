@@ -20,12 +20,16 @@ public class cameraController : MonoBehaviour
     public float distanceAroundCharacter = 1f;
 
     [Tooltip("Minimum span in X direction that the camera can view (also affects orthographic size)")]
-    [Range(0f, 30f)]
     public float minSpanX = 5f;
 
     [Tooltip("Maximum span in X direction that the camera can view (also affects orthographic size)")]
-    [Range(10f, 100f)]
     public float maxSpanX = 30f;
+
+    [Tooltip("Enable fixed X, see fixedX")]
+    public bool useFixedX;
+
+    [Tooltip("Fixed X, overrides final Cam Position X after all other calculations are done")]
+    public float fixedX = 0f;
 
 
     /* Tracked state */
@@ -70,13 +74,21 @@ public class cameraController : MonoBehaviour
         {
             camPositionY = Mathf.Max(camPositionY, bottomLimitTransform.position.y + envelopeExtent.y);
         }
-        if (leftLimitTransform != null)
+
+        if (useFixedX)
         {
-            camPositionX = Mathf.Max(camPositionX, leftLimitTransform.position.x + envelopeExtent.x);
+            camPositionX = fixedX;
         }
-        if (rightLimitTransform != null)
+        else
         {
-            camPositionX = Mathf.Min(camPositionX, rightLimitTransform.position.x - envelopeExtent.x);
+            if (leftLimitTransform != null)
+            {
+                camPositionX = Mathf.Max(camPositionX, leftLimitTransform.position.x + envelopeExtent.x);
+            }
+            if (rightLimitTransform != null)
+            {
+                camPositionX = Mathf.Min(camPositionX, rightLimitTransform.position.x - envelopeExtent.x);
+            }
         }
 
         transform.position = new Vector3(camPositionX, camPositionY, -10);

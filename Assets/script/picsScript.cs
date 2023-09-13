@@ -25,9 +25,9 @@ public class picsScript : MonoBehaviour
     {
         particlesDeath.gameObject.transform.position = new Vector2(gameObject.transform.position.x,
             particlesDeath.gameObject.transform.position.y);
-        var graphic = gameObject.GetComponent<SpriteRenderer>();
+        var graphic = gameObject.GetComponentInChildren<SpriteRenderer>();
         var rb = gameObject.GetComponent<Rigidbody2D>();
-        graphic.enabled = false; 
+        graphic.enabled = false;
         rb.simulated = false;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
         particlesDeath.Play();
